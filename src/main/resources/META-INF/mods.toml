@@ -1,37 +1,39 @@
 modLoader="javafml" #mandatory
-loaderVersion="[41,)" #mandatory
-issueTrackerURL="http://github.com/oitsjustjose/geolosys/issues"
+loaderVersion="[47,)" #mandatory
+issueTrackerURL="https://github.com/immails/Geolosys-Next/issues"
 license="GNU GPLv3"
 
 [[mods]]
 modId="geolosys"
-version="${file.jarVersion}"
+version="8.0.0"
 displayName="Geolosys"
-displayURL="http://geolosys.oitsjustjose.com/en/latest/"
-credits="Contributors on GitHub"
-authors="oitsjustjose"
+displayURL="https://github.com/immails/Geolosys-Next/"
+authors="immails, oitsjustjose"
 description='''
 A highly configurable terrafirmacraft-style ore generation mod which permits users to configure almost everything, add their own entries, and many compatibility integrations for other mods.
 
-Support me on Patreon at https://patreon.com/oitsjustjose
+Support original mod author on Patreon at https://patreon.com/oitsjustjose
+You can also support me (immails) on Boosty at https://boosty.to/immails 💓
+
+P.S. Depth meter texture is from Terraria 😊
 '''
 [[dependencies.geolosys]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[41,)" #mandatory
+    versionRange="[47,)" #mandatory
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.geolosys]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19,)"
+    versionRange="[1.20,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.geolosys]]
     modId="patchouli"
     mandatory=true
-    versionRange="[1.19,)"
+    versionRange="[1.20,)"
     ordering="NONE"
     side="BOTH"
