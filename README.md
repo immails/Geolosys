@@ -1,9 +1,15 @@
-![Logo](https://raw.githubusercontent.com/oitsjustjose/Geolosys/master/Geolosys%20Logo.png)
-
-## Geolosys Next Changes
+## Geolosys Next
 
 This is an attempt to port Geolosys to 1.20.1. Something may be broken. So testing is welcomed!
 (I'm also trying to get rid of many static variables in the code)
+
+### Changes in 1.20.1:
+- Added Depth meter Item
+- Removed depth indicator from Prospecting Pick (in favor of Depth Meter Item)
+- Updated ru_ru.json locale
+- Reworked patchouli book a bit
+- Added NodeJS script to generate patchouli book resource pages
+- and other small changes...
 
 ## Info
 
@@ -40,3 +46,5 @@ Are welcome! Just please document what it is you have changed via your PR Commen
 Issues should follow the issues template provided. If they don't, don't be surprised if the issue is marked invalid.
 
 For issues regarding Geolosys world generation, include both `geolosys_ores.json` as well as `geolosys.cfg`. It's impossible to figure out what the exact case is for world generation if I'm not sure what variables have been changed.
+
+![Logo](https://raw.githubusercontent.com/oitsjustjose/Geolosys/master/Geolosys%20Logo.png)
