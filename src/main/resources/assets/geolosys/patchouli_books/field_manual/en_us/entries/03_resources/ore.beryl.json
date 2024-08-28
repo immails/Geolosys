@@ -1,0 +1,20 @@
+{
+    "name": "Beryl",
+    "icon": "geolosys:beryl_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Beryl",
+            "item": "geolosys:beryl_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Mountains$(br)$(l)Min. depth: $()-118$(br)$(l)Max. depth: $()-43$(br)$(l)Deposit type: $()Dike"
+        },
+        {
+            "type": "spotlight",
+            "title": "Beryl Sample",
+            "item": "geolosys:beryl_ore_sample",
+            "text": "This $(l)Dike$() deposit can be found between $(l)118m. below$() and $(l)43m. below$() sea level, in $(l)Mountains.$()"
+        }
+    ]
+}

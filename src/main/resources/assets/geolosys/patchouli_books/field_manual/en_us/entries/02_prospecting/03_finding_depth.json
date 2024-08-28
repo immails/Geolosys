@@ -1,0 +1,13 @@
+{
+  "name": "Metering depth",
+  "icon": "geolosys:depth_meter",
+  "category": "geolosys:02_prospecting",
+  "pages": [
+    {
+      "type": "crafting",
+      "title": "Metering depth",
+      "text": "Depth meter can be used to measure the depth relatively to the sea level. Use <key>use</key> to see the depth.",
+      "recipe": "geolosys:crafting/depth_meter"
+    }
+  ]
+}

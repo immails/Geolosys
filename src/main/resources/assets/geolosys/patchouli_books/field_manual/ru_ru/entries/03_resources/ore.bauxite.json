@@ -1,0 +1,20 @@
+{
+    "name": "Боксит",
+    "icon": "geolosys:bauxite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Боксит",
+            "item": "geolosys:bauxite_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Верхнем мире$(br)$(l)Мин. глубина: $()-14$(br)$(l)Макс. глубина: $()+3$(br)$(l)Тип месторождения: $()Плотное"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец боксита",
+            "item": "geolosys:bauxite_ore_sample",
+            "text": "Это $(l)Плотное$() месторождение может быть найдено между $(l)14м. ниже$() и $(l)3м. выше$() уровня моря, в $(l)Верхнем мире.$()"
+        }
+    ]
+}

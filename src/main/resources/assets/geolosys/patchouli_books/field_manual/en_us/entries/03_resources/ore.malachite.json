@@ -1,0 +1,20 @@
+{
+    "name": "Malachite",
+    "icon": "geolosys:malachite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Malachite",
+            "item": "geolosys:malachite_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-78$(br)$(l)Max. depth: $()+28$(br)$(l)Deposit type: $()Dense"
+        },
+        {
+            "type": "spotlight",
+            "title": "Malachite Sample",
+            "item": "geolosys:malachite_ore_sample",
+            "text": "This $(l)Dense$() deposit can be found between $(l)78m. below$() and $(l)28m. above$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

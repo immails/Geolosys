@@ -1,0 +1,20 @@
+{
+    "name": "Лазурит",
+    "icon": "geolosys:lapis_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Лазурит",
+            "item": "geolosys:lapis_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Сухих биомах$(br)$(l)Мин. глубина: $()-126$(br)$(l)Макс. глубина: $()+2$(br)$(l)Тип месторождения: $()Редкое"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец лазурита",
+            "item": "geolosys:lapis_ore_sample",
+            "text": "Это $(l)Редкое$() месторождение может быть найдено между $(l)126м. ниже$() и $(l)2м. выше$() уровня моря, в $(l)Сухих биомах.$()"
+        }
+    ]
+}

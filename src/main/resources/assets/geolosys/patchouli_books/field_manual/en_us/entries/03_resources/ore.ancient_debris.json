@@ -1,0 +1,20 @@
+{
+    "name": "Ancient Debris",
+    "icon": "geolosys:ancient_debris_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Ancient Debris",
+            "item": "geolosys:ancient_debris_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Nether$(br)$(l)Min. depth: $()-54$(br)$(l)Max. depth: $()-40$(br)$(l)Deposit type: $()Dike"
+        },
+        {
+            "type": "spotlight",
+            "title": "Ancient Debris Sample",
+            "item": "geolosys:ancient_debris_ore_sample",
+            "text": "This $(l)Dike$() deposit can be found between $(l)54m. below$() and $(l)40m. below$() sea level, in $(l)Nether.$()"
+        }
+    ]
+}

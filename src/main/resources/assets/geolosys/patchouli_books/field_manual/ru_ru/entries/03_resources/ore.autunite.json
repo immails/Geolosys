@@ -1,0 +1,20 @@
+{
+    "name": "Отенит",
+    "icon": "geolosys:autunite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Отенит",
+            "item": "geolosys:autunite_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Горах$(br)$(l)Мин. глубина: $()-54$(br)$(l)Макс. глубина: $()-29$(br)$(l)Тип месторождения: $()Редкое"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец отенита",
+            "item": "geolosys:autunite_ore_sample",
+            "text": "Это $(l)Редкое$() месторождение может быть найдено между $(l)54м. ниже$() и $(l)29м. ниже$() уровня моря, в $(l)Горах.$()"
+        }
+    ]
+}

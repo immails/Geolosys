@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "text",
-      "text": "Samples lie on the surface above underground mineral deposits, also referred to as Plutons. These samples can (if configured to) drop a cluster or item, which can help you determine what resource the pluton provides! You can break these either normally or with right-click."
+      "text": "Samples lie on the surface above underground mineral deposits, also referred to as Plutons. These samples can (if configured to) drop a cluster or item, which can help you determine what resource the pluton provides! You can break these either normally or with <key>use</key>."
     },
     {
       "type": "image",

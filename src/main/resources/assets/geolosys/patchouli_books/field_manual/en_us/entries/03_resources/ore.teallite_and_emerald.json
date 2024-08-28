@@ -1,0 +1,20 @@
+{
+    "name": "Teallite",
+    "icon": "geolosys:teallite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Teallite",
+            "item": "geolosys:teallite_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Hot overworld biomes$(br)$(l)Min. depth: $()-114$(br)$(l)Max. depth: $()-102$(br)$(l)Deposit type: $()Dike"
+        },
+        {
+            "type": "spotlight",
+            "title": "Teallite Sample",
+            "item": "geolosys:teallite_ore_sample",
+            "text": "This $(l)Dike$() deposit can be found between $(l)114m. below$() and $(l)102m. below$() sea level, in $(l)Hot overworld biomes.$()"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "name": "Кимберлит",
+    "icon": "geolosys:kimberlite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Кимберлит",
+            "item": "geolosys:kimberlite_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Верхнем мире$(br)$(l)Мин. глубина: $()-126$(br)$(l)Макс. глубина: $()-52$(br)$(l)Тип месторождения: $()Дайковое"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец кимберлита",
+            "item": "geolosys:kimberlite_ore_sample",
+            "text": "Это $(l)Дайковое$() месторождение может быть найдено между $(l)126м. ниже$() и $(l)52м. ниже$() уровня моря, в $(l)Верхнем мире.$()"
+        }
+    ]
+}

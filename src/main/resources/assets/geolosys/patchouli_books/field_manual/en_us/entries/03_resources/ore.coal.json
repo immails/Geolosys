@@ -1,0 +1,20 @@
+{
+    "name": "Coal",
+    "icon": "geolosys:coal_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Coal",
+            "item": "geolosys:coal_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-28$(br)$(l)Max. depth: $()+16$(br)$(l)Deposit type: $()Sparse"
+        },
+        {
+            "type": "spotlight",
+            "title": "Coal Sample",
+            "item": "geolosys:coal_ore_sample",
+            "text": "This $(l)Sparse$() deposit can be found between $(l)28m. below$() and $(l)16m. above$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

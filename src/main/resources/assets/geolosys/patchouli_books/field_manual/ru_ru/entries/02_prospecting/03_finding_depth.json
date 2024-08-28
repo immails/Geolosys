@@ -1,0 +1,13 @@
+{
+  "name": "Измерение глубины",
+  "icon": "geolosys:depth_meter",
+  "category": "geolosys:02_prospecting",
+  "pages": [
+    {
+      "type": "crafting",
+      "title": "Измерение глубины",
+      "text": "Глубинометер может быть использован для определения глубины относительно уровня моря. Используйте <key>use</key>, чтобы узнать глубину.",
+      "recipe": "geolosys:crafting/depth_meter"
+    }
+  ]
+}

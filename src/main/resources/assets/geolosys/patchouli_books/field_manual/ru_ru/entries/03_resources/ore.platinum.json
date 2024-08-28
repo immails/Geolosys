@@ -1,0 +1,20 @@
+{
+    "name": "Платина",
+    "icon": "geolosys:platinum_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Платина",
+            "item": "geolosys:platinum_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Горах$(br)$(l)Мин. глубина: $()-87$(br)$(l)Макс. глубина: $()-43$(br)$(l)Тип месторождения: $()Дайковое"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец платины",
+            "item": "geolosys:platinum_ore_sample",
+            "text": "Это $(l)Дайковое$() месторождение может быть найдено между $(l)87м. ниже$() и $(l)43м. ниже$() уровня моря, в $(l)Горах.$()"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "name": "Poor Gold",
+    "icon": "geolosys:nether_gold_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Poor Gold",
+            "item": "geolosys:nether_gold_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Nether$(br)$(l)Min. depth: $()-52$(br)$(l)Max. depth: $()-22$(br)$(l)Deposit type: $()Dense"
+        },
+        {
+            "type": "spotlight",
+            "title": "Poor Gold Sample",
+            "item": "geolosys:nether_gold_ore_sample",
+            "text": "This $(l)Dense$() deposit can be found between $(l)52m. below$() and $(l)22m. below$() sea level, in $(l)Nether.$()"
+        }
+    ]
+}

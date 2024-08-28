@@ -1,0 +1,16 @@
+{
+  "name": "Образцы",
+  "icon": "geolosys:hematite_ore_sample",
+  "category": "geolosys:02_prospecting",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Образцы лежат на поверхности над подземными месторождениями полезных ископаемых, также называемыми плутоны. Эти образцы могут (если настроены) сбрасывать кластер или предмет, который может помочь вам определить, какой ресурс предоставляет плутоны! Вы можете разбить их как обычно, так и на <key>use</key>."
+    },
+    {
+      "type": "image",
+      "images": ["geolosys:textures/gui/patchouli/introduction/samples.png"],
+      "border": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+    "name": "Берилл",
+    "icon": "geolosys:beryl_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Берилл",
+            "item": "geolosys:beryl_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Горах$(br)$(l)Мин. глубина: $()-118$(br)$(l)Макс. глубина: $()-43$(br)$(l)Тип месторождения: $()Дайковое"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец берилла",
+            "item": "geolosys:beryl_ore_sample",
+            "text": "Это $(l)Дайковое$() месторождение может быть найдено между $(l)118м. ниже$() и $(l)43м. ниже$() уровня моря, в $(l)Горах.$()"
+        }
+    ]
+}

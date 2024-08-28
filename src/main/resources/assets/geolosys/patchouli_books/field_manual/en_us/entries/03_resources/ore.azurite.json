@@ -1,0 +1,20 @@
+{
+    "name": "Azurite",
+    "icon": "geolosys:azurite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Azurite",
+            "item": "geolosys:azurite_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-111$(br)$(l)Max. depth: $()-49$(br)$(l)Deposit type: $()Dense"
+        },
+        {
+            "type": "spotlight",
+            "title": "Azurite Sample",
+            "item": "geolosys:azurite_ore_sample",
+            "text": "This $(l)Dense$() deposit can be found between $(l)111m. below$() and $(l)49m. below$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

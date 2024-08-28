@@ -1,0 +1,18 @@
+{
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "inlineSources": true,
+        "inlineSourceMap": true,
+        "moduleResolution": "node",
+        "target": "ESNext",
+        "module": "ESNext",
+        "lib": ["ESNext"],
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "buildOptions": {
+        "verbose": true,
+        "force": true
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "author": "immails",
+  "description": "consider using TSX to run the scripts. npm i tsx -g, or npx tsx",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.5.1"
+  }
+}

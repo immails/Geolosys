@@ -1,0 +1,20 @@
+{
+    "name": "Assorted Quartz",
+    "icon": "geolosys:quartz_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Assorted Quartz",
+            "item": "geolosys:quartz_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-126$(br)$(l)Max. depth: $()-110$(br)$(l)Deposit type: $()Dike"
+        },
+        {
+            "type": "spotlight",
+            "title": "Assorted Quartz Sample",
+            "item": "geolosys:quartz_ore_sample",
+            "text": "This $(l)Dike$() deposit can be found between $(l)126m. below$() and $(l)110m. below$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

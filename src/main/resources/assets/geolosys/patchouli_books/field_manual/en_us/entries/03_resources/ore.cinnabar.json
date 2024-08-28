@@ -1,0 +1,20 @@
+{
+    "name": "Cinnabar",
+    "icon": "geolosys:cinnabar_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Cinnabar",
+            "item": "geolosys:cinnabar_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-122$(br)$(l)Max. depth: $()-47$(br)$(l)Deposit type: $()Sparse"
+        },
+        {
+            "type": "spotlight",
+            "title": "Cinnabar Sample",
+            "item": "geolosys:cinnabar_ore_sample",
+            "text": "This $(l)Sparse$() deposit can be found between $(l)122m. below$() and $(l)47m. below$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

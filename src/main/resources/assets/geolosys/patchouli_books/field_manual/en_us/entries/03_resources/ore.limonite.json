@@ -1,0 +1,20 @@
+{
+    "name": "Limonite",
+    "icon": "geolosys:limonite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Limonite",
+            "item": "geolosys:limonite_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Marshy biomes$(br)$(l)Min. depth: $()-110$(br)$(l)Max. depth: $()-94$(br)$(l)Deposit type: $()Dike"
+        },
+        {
+            "type": "spotlight",
+            "title": "Limonite Sample",
+            "item": "geolosys:limonite_ore_sample",
+            "text": "This $(l)Dike$() deposit can be found between $(l)110m. below$() and $(l)94m. below$() sea level, in $(l)Marshy biomes.$()"
+        }
+    ]
+}

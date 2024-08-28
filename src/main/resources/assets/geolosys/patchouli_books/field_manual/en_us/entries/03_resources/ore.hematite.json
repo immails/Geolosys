@@ -1,0 +1,20 @@
+{
+    "name": "Hematite",
+    "icon": "geolosys:hematite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Hematite",
+            "item": "geolosys:hematite_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-30$(br)$(l)Max. depth: $()-2$(br)$(l)Deposit type: $()Dike"
+        },
+        {
+            "type": "spotlight",
+            "title": "Hematite Sample",
+            "item": "geolosys:hematite_ore_sample",
+            "text": "This $(l)Dike$() deposit can be found between $(l)30m. below$() and $(l)2m. below$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

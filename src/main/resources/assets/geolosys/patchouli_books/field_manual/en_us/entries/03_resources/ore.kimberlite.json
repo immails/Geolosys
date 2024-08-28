@@ -1,0 +1,20 @@
+{
+    "name": "Kimberlite",
+    "icon": "geolosys:kimberlite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Kimberlite",
+            "item": "geolosys:kimberlite_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-126$(br)$(l)Max. depth: $()-52$(br)$(l)Deposit type: $()Dike"
+        },
+        {
+            "type": "spotlight",
+            "title": "Kimberlite Sample",
+            "item": "geolosys:kimberlite_ore_sample",
+            "text": "This $(l)Dike$() deposit can be found between $(l)126m. below$() and $(l)52m. below$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

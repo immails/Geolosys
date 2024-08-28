@@ -1,0 +1,20 @@
+{
+    "name": "Lapis Lazuli",
+    "icon": "geolosys:lapis_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Lapis Lazuli",
+            "item": "geolosys:lapis_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Dry biomes$(br)$(l)Min. depth: $()-126$(br)$(l)Max. depth: $()+2$(br)$(l)Deposit type: $()Sparse"
+        },
+        {
+            "type": "spotlight",
+            "title": "Lapis Lazuli Sample",
+            "item": "geolosys:lapis_ore_sample",
+            "text": "This $(l)Sparse$() deposit can be found between $(l)126m. below$() and $(l)2m. above$() sea level, in $(l)Dry biomes.$()"
+        }
+    ]
+}

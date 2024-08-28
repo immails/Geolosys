@@ -1,0 +1,20 @@
+{
+    "name": "Platinum",
+    "icon": "geolosys:platinum_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Platinum",
+            "item": "geolosys:platinum_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Mountains$(br)$(l)Min. depth: $()-87$(br)$(l)Max. depth: $()-43$(br)$(l)Deposit type: $()Dike"
+        },
+        {
+            "type": "spotlight",
+            "title": "Platinum Sample",
+            "item": "geolosys:platinum_ore_sample",
+            "text": "This $(l)Dike$() deposit can be found between $(l)87m. below$() and $(l)43m. below$() sea level, in $(l)Mountains.$()"
+        }
+    ]
+}

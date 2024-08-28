@@ -1,0 +1,20 @@
+{
+    "name": "Лимонит",
+    "icon": "geolosys:limonite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Лимонит",
+            "item": "geolosys:limonite_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Болотистых биомах$(br)$(l)Мин. глубина: $()-110$(br)$(l)Макс. глубина: $()-94$(br)$(l)Тип месторождения: $()Дайковое"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец лимонита",
+            "item": "geolosys:limonite_ore_sample",
+            "text": "Это $(l)Дайковое$() месторождение может быть найдено между $(l)110м. ниже$() и $(l)94м. ниже$() уровня моря, в $(l)Болотистых биомах.$()"
+        }
+    ]
+}

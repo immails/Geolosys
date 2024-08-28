@@ -1,0 +1,20 @@
+{
+    "name": "Cassiterite",
+    "icon": "geolosys:cassiterite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Cassiterite",
+            "item": "geolosys:cassiterite_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Sandy biomes$(br)$(l)Min. depth: $()-18$(br)$(l)Max. depth: $()+6$(br)$(l)Deposit type: $()Dense"
+        },
+        {
+            "type": "spotlight",
+            "title": "Cassiterite Sample",
+            "item": "geolosys:cassiterite_ore_sample",
+            "text": "This $(l)Dense$() deposit can be found between $(l)18m. below$() and $(l)6m. above$() sea level, in $(l)Sandy biomes.$()"
+        }
+    ]
+}

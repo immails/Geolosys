@@ -1,0 +1,40 @@
+{
+  "name": "Рудные плутоны",
+  "icon": "geolosys:hematite_ore",
+  "category": "geolosys:01_introduction",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Руды будут генерироваться в Плутонах - это формации, которые образуются естественным образом и содержат ресурсы, которые вам могут понадобиться. Существует четыре варианта плутонов:"
+    },
+    {
+      "type": "image",
+      "title": "Плотные Плутоны",
+      "text": "Пример плотного золотого плутона",
+      "images": ["geolosys:textures/gui/patchouli/introduction/dense.png"],
+      "border": true
+    },
+    {
+      "type": "image",
+      "title": "Дайки",
+      "text": "Пример кварцевой дайки",
+      "images": ["geolosys:textures/gui/patchouli/introduction/dike.png"],
+      "border": true
+    },
+    {
+      "type": "image",
+      "title": "Слоистые плутоны",
+      "text": "Пример слоистого угольного плутона",
+      "images": ["geolosys:textures/gui/patchouli/introduction/layer.png"],
+      "border": true
+    },
+    {
+      "type": "image",
+      "title": "Редкие Плутоны",
+      "text": "Пример редкого месторождения редстоуна",
+      "images": ["geolosys:textures/gui/patchouli/introduction/sparse.png"],
+      "border": true
+    }
+  ]
+}

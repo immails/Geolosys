@@ -1,0 +1,6 @@
+{
+  "name": "Разведка",
+  "description": "Все о поиске и сборе руды",
+  "icon": "geolosys:prospectors_pick",
+  "sortnum": 2
+}

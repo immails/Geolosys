@@ -1,0 +1,20 @@
+{
+    "name": "Малахит",
+    "icon": "geolosys:malachite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Малахит",
+            "item": "geolosys:malachite_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Верхнем мире$(br)$(l)Мин. глубина: $()-78$(br)$(l)Макс. глубина: $()+28$(br)$(l)Тип месторождения: $()Плотное"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец малахита",
+            "item": "geolosys:malachite_ore_sample",
+            "text": "Это $(l)Плотное$() месторождение может быть найдено между $(l)78м. ниже$() и $(l)28м. выше$() уровня моря, в $(l)Верхнем мире.$()"
+        }
+    ]
+}

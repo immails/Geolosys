@@ -1,0 +1,20 @@
+{
+    "name": "Теаллит",
+    "icon": "geolosys:teallite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Теаллит",
+            "item": "geolosys:teallite_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Горячих биомах Верхнего мира$(br)$(l)Мин. глубина: $()-114$(br)$(l)Макс. глубина: $()-102$(br)$(l)Тип месторождения: $()Дайковое"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец теаллита",
+            "item": "geolosys:teallite_ore_sample",
+            "text": "Это $(l)Дайковое$() месторождение может быть найдено между $(l)114м. ниже$() и $(l)102м. ниже$() уровня моря, в $(l)Горячих биомах Верхнего мира.$()"
+        }
+    ]
+}

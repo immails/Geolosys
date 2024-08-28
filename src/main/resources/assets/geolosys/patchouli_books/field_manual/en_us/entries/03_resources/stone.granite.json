@@ -1,0 +1,18 @@
+{
+    "name": "Granite",
+    "icon": "minecraft:granite",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "minecraft:granite",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-60$(br)$(l)Max. depth: $()+8$(br)$(l)Deposit type: $()Dense"
+        },
+        {
+            "type": "text",
+            "title": "Description",
+            "text": "This $(l)Dense$() deposit can be found between $(l)60m. below$() and $(l)8m. above$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

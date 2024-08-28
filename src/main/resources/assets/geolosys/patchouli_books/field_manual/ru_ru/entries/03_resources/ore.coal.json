@@ -1,0 +1,20 @@
+{
+    "name": "Уголь",
+    "icon": "geolosys:coal_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Уголь",
+            "item": "geolosys:coal_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Верхнем мире$(br)$(l)Мин. глубина: $()-28$(br)$(l)Макс. глубина: $()+16$(br)$(l)Тип месторождения: $()Редкое"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец угля",
+            "item": "geolosys:coal_ore_sample",
+            "text": "Это $(l)Редкое$() месторождение может быть найдено между $(l)28м. ниже$() и $(l)16м. выше$() уровня моря, в $(l)Верхнем мире.$()"
+        }
+    ]
+}

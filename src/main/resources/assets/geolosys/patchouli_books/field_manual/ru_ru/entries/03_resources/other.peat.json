@@ -1,0 +1,20 @@
+{
+    "name": "Торф",
+    "icon": "geolosys:peat",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Торф",
+            "item": "geolosys:peat",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Верхнем мире$(br)$(l)Тип месторождения: $()Поверхностное Слоистое"
+        },
+        {
+            "type": "spotlight",
+            "title": "Рододендрон",
+            "item": "geolosys:rhododendron",
+            "text": "Это $(l)Поверхностное Слоистое$() месторождение может быть найдено в $(l)Верхнем мире.$()"
+        }
+    ]
+}

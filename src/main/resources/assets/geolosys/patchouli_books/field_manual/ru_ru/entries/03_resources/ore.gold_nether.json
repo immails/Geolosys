@@ -1,0 +1,20 @@
+{
+    "name": "Бедное золото",
+    "icon": "geolosys:nether_gold_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Бедное золото",
+            "item": "geolosys:nether_gold_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Незере$(br)$(l)Мин. глубина: $()-52$(br)$(l)Макс. глубина: $()-22$(br)$(l)Тип месторождения: $()Плотное"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец бедного золота",
+            "item": "geolosys:nether_gold_ore_sample",
+            "text": "Это $(l)Плотное$() месторождение может быть найдено между $(l)52м. ниже$() и $(l)22м. ниже$() уровня моря, в $(l)Незере.$()"
+        }
+    ]
+}

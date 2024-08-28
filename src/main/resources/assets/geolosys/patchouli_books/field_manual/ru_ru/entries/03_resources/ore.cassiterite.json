@@ -1,0 +1,20 @@
+{
+    "name": "Касситерит",
+    "icon": "geolosys:cassiterite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Касситерит",
+            "item": "geolosys:cassiterite_ore",
+            "link_recipe": false,
+            "text": "$(l)Локация: $()В Песчанных биомах$(br)$(l)Мин. глубина: $()-18$(br)$(l)Макс. глубина: $()+6$(br)$(l)Тип месторождения: $()Плотное"
+        },
+        {
+            "type": "spotlight",
+            "title": "Образец касситерита",
+            "item": "geolosys:cassiterite_ore_sample",
+            "text": "Это $(l)Плотное$() месторождение может быть найдено между $(l)18м. ниже$() и $(l)6м. выше$() уровня моря, в $(l)Песчанных биомах.$()"
+        }
+    ]
+}

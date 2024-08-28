@@ -1,0 +1,20 @@
+{
+    "name": "Gold",
+    "icon": "geolosys:gold_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Gold",
+            "item": "geolosys:gold_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-126$(br)$(l)Max. depth: $()-30$(br)$(l)Deposit type: $()Dense"
+        },
+        {
+            "type": "spotlight",
+            "title": "Gold Sample",
+            "item": "geolosys:gold_ore_sample",
+            "text": "This $(l)Dense$() deposit can be found between $(l)126m. below$() and $(l)30m. below$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

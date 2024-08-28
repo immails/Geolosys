@@ -1,0 +1,20 @@
+{
+    "name": "Sphalerite",
+    "icon": "geolosys:sphalerite_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Sphalerite",
+            "item": "geolosys:sphalerite_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-25$(br)$(l)Max. depth: $()-16$(br)$(l)Deposit type: $()Sparse"
+        },
+        {
+            "type": "spotlight",
+            "title": "Sphalerite Sample",
+            "item": "geolosys:sphalerite_ore_sample",
+            "text": "This $(l)Sparse$() deposit can be found between $(l)25m. below$() and $(l)16m. below$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

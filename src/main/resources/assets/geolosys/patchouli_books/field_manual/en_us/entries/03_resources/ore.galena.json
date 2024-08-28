@@ -1,0 +1,20 @@
+{
+    "name": "Galena",
+    "icon": "geolosys:galena_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Galena",
+            "item": "geolosys:galena_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Plains$(br)$(l)Min. depth: $()-78$(br)$(l)Max. depth: $()-30$(br)$(l)Deposit type: $()Sparse"
+        },
+        {
+            "type": "spotlight",
+            "title": "Galena Sample",
+            "item": "geolosys:galena_ore_sample",
+            "text": "This $(l)Sparse$() deposit can be found between $(l)78m. below$() and $(l)30m. below$() sea level, in $(l)Plains.$()"
+        }
+    ]
+}

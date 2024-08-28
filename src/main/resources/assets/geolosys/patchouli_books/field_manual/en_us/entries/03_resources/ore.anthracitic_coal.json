@@ -1,0 +1,20 @@
+{
+    "name": "Anthracitic Coal",
+    "icon": "geolosys:anthracite_coal_ore",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Anthracitic Coal",
+            "item": "geolosys:anthracite_coal_ore",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Min. depth: $()-126$(br)$(l)Max. depth: $()-114$(br)$(l)Deposit type: $()Layered"
+        },
+        {
+            "type": "spotlight",
+            "title": "Anthracitic Coal Sample",
+            "item": "geolosys:anthracite_coal_ore_sample",
+            "text": "This $(l)Layered$() deposit can be found between $(l)126m. below$() and $(l)114m. below$() sea level, in $(l)Overworld.$()"
+        }
+    ]
+}

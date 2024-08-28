@@ -1,0 +1,20 @@
+{
+    "name": "Peat",
+    "icon": "geolosys:peat",
+    "category": "geolosys:03_resources",
+    "pages": [
+        {
+            "type": "spotlight",
+            "title": "Peat",
+            "item": "geolosys:peat",
+            "link_recipe": false,
+            "text": "$(l)Location: $()Overworld$(br)$(l)Deposit type: $()Top Layer"
+        },
+        {
+            "type": "spotlight",
+            "title": "Rhododendron",
+            "item": "geolosys:rhododendron",
+            "text": "This $(l)Top Layer$() deposit can be found in $(l)Overworld.$()"
+        }
+    ]
+}
