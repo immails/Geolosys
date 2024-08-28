@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["GIG", "IFI", "III"],
+  "key": {
+    "G": {
+      "tag": "forge:gems"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "F": {
+      "item": "minecraft:flint"
+    }
+  },
+  "result": {
+    "item": "geolosys:depth_meter"
+  }
+}

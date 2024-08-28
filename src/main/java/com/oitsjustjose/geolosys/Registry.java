@@ -6,6 +6,7 @@ import com.oitsjustjose.geolosys.common.blocks.PeatBlock;
 import com.oitsjustjose.geolosys.common.blocks.PlantBlock;
 import com.oitsjustjose.geolosys.common.blocks.SampleBlock;
 import com.oitsjustjose.geolosys.common.items.CoalItem;
+import com.oitsjustjose.geolosys.common.items.DepthMeterItem;
 import com.oitsjustjose.geolosys.common.items.ProPickItem;
 import com.oitsjustjose.geolosys.common.utils.Constants;
 import com.oitsjustjose.geolosys.common.world.feature.DepositFeature;
@@ -127,8 +128,9 @@ public class Registry {
             )
         );
 
-        // Special Items -- just the one AFAIK
+        // Special Items
         final RegistryObject<ProPickItem> prospector_pick = RegisterItem(TabListQueue, "prospectors_pick", ProPickItem::new);
+        RegisterItem(TabListQueue, "depth_meter", () -> new DepthMeterItem(baseProps.stacksTo(1)));
 
         // Coals
         RegisterItem(TabListQueue, "anthracite_coal", () -> new CoalItem(20));
@@ -172,6 +174,8 @@ public class Registry {
         RegisterItem(TabListQueue, "tin_cluster", () -> new Item(baseProps));
         RegisterItem(TabListQueue, "uranium_cluster", () -> new Item(baseProps));
         RegisterItem(TabListQueue, "zinc_cluster", () -> new Item(baseProps));
+
+        // Others
         
         CreativeTabRegisty.register("geolosys", 
             () -> CreativeModeTab.builder()

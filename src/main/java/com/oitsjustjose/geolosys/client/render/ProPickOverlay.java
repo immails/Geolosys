@@ -1,5 +1,5 @@
 package com.oitsjustjose.geolosys.client.render;
-
+/* 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.oitsjustjose.geolosys.common.config.ClientConfig;
 import com.oitsjustjose.geolosys.common.items.ProPickItem;
@@ -12,6 +12,7 @@ import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
+// Unused in favor of depth meter
 public class ProPickOverlay {
     @SubscribeEvent
     public static void onDrawScreen(RenderGuiOverlayEvent.Post event) {
@@ -36,3 +37,4 @@ public class ProPickOverlay {
         }
     }
 }
+*/

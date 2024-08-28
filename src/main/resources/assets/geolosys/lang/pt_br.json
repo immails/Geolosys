@@ -88,6 +88,7 @@
   "item.geolosys.field_manual": "Manual de Campo",
   "geolosys.field_manual.tooltip": "Tudo o que você precisa saber sobre minerar com o Geolosys!",
   "item.geolosys.prospectors_pick": "Picareta de Garimpeiro",
+  "item.geolosys.depth_meter": "Medidor de profundidade",
   "geolosys.pro_pick.tooltip": "Útil quando combinado com uma bússola!",
   "geolosys.pro_pick.tooltip.nonefound_stone_surface": "Nenhuma pedra especial nesta área",
   "geolosys.pro_pick.tooltip.nonefound_surface": "Nenhum depósito nesta área",

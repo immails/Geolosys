@@ -88,6 +88,7 @@
   "item.geolosys.field_manual": "野外探矿手册",
   "geolosys.field_manual.tooltip": "一切关于在 Geolosys 中挖矿的内容，尽在这本手册中！",
   "item.geolosys.prospectors_pick": "探矿镐",
+  "item.geolosys.depth_meter": "深度计",
   "geolosys.pro_pick.tooltip": "和指南针搭配使用效果更佳",
   "geolosys.pro_pick.tooltip.nonefound_stone_surface": "这个地区没有特殊的矿石",
   "geolosys.pro_pick.tooltip.nonefound_surface": "在这片区域中没有找到矿藏。",

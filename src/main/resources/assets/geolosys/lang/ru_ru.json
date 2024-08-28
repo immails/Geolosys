@@ -86,6 +86,7 @@
   "item.geolosys.field_manual": "Полевое руководство",
   "item.geolosys.field_manual.landing": "Ваш путеводитель по разведке с Geolosys (WIP)",
   "item.geolosys.prospectors_pick": "Кирка геолога",
+  "item.geolosys.depth_meter": "Глубинометр",
   "geolosys.pro_pick.tooltip": "Полезна в сочетании с компасом!",
   "geolosys.pro_pick.tooltip.nonefound_stone_surface": "В этой области нет особых камней",
   "geolosys.pro_pick.tooltip.nonefound_surface": "Нет месторождений в этой области",

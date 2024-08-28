@@ -86,6 +86,7 @@
   "item.geolosys.field_manual": "Manuel de Terrain",
   "item.geolosys.field_manual.landing": "Votre guide pratique à travers la Prospection avec Geolosys (WIP)",
   "item.geolosys.prospectors_pick": "Pioche du Prospecteur",
+  "item.geolosys.depth_meter": "Profondimètre",
   "geolosys.pro_pick.tooltip": "Pratique, surtout avec une boussole!",
   "geolosys.pro_pick.tooltip.nonefound_stone_surface": "Aucune pierre spéciale dans cette zone",
   "geolosys.pro_pick.tooltip.nonefound_surface": "Aucun gîte minéral dans cette zone",

@@ -1,6 +1,6 @@
 package com.oitsjustjose.geolosys.client;
 
-import com.oitsjustjose.geolosys.client.render.ProPickOverlay;
+// import com.oitsjustjose.geolosys.client.render.ProPickOverlay;
 import com.oitsjustjose.geolosys.common.config.ClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -11,7 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class GeolosysClient {
     public static void setup() {
         MinecraftForge.EVENT_BUS.register(GeolosysClient.class);
-        MinecraftForge.EVENT_BUS.register(ProPickOverlay.class);
+        //MinecraftForge.EVENT_BUS.register(ProPickOverlay.class);
     }
 
     @SubscribeEvent
