@@ -179,7 +179,7 @@ public class Registry {
         
         CreativeTabRegisty.register("geolosys", 
             () -> CreativeModeTab.builder()
-                .title(Component.literal("Geolosys"))
+                .title(Component.translatable("itemGroup.geolosys.name"))
                 .icon(() -> new ItemStack(prospector_pick.get()))
                 .displayItems((params, output) -> {
                     for(RegistryObject<? extends Item> TabListItem : TabListQueue) {
