@@ -1,11 +1,13 @@
 package com.oitsjustjose.geolosys.capability.deposit;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -96,7 +98,7 @@ public class DepositCapability implements IDepositCapability {
         public static PendingBlock deserialize(Tag t) {
             if (t instanceof CompoundTag tag) {
                 BlockPos pos = NbtUtils.readBlockPos(tag.getCompound("pos"));
-                BlockState state = NbtUtils.readBlockState(tag.getCompound("state"));
+                BlockState state = NbtUtils.readBlockState(null, tag.getCompound("state")); // FIXME: null 
                 return new PendingBlock(pos, state);
             }
             return null;

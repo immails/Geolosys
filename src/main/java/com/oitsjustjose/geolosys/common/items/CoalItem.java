@@ -12,7 +12,7 @@ public class CoalItem extends Item {
     private int burnTime;
 
     public CoalItem(int burnTime) {
-        super(new Item.Properties().tab(GeolosysGroup.getInstance()).fireResistant());
+        super(new Item.Properties().fireResistant()); // FIXME: Geolosys Creative Tab //.tab(GeolosysGroup.getInstance())
     }
 
     @Override

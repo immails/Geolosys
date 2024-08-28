@@ -33,7 +33,7 @@ public class Utils {
     public static BlockPos getTopSolidBlock(LevelReader world, BlockPos start) {
         BlockPos retPos = new BlockPos(start.getX(), world.getHeight() - 1, start.getZ());
         while (retPos.getY() > 0) {
-            if (world.getBlockState(retPos).getMaterial().isSolid()) {
+            if (world.getBlockState(retPos).isSolidRender(world, retPos)) {
                 break;
             }
             retPos = retPos.below();
@@ -43,7 +43,7 @@ public class Utils {
 
     public static MutableComponent tryTranslate(String transKey, Object... values) {
         try {
-            TranslatableContents contents = new TranslatableContents(transKey, values);
+            TranslatableContents contents = new TranslatableContents(transKey, transKey, values);
             return contents.resolve(null, null, 0);
         } catch (CommandSyntaxException ex) {
             return Component.empty().append(transKey);

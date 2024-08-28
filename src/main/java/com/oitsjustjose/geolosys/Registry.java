@@ -8,90 +8,100 @@ import com.oitsjustjose.geolosys.common.blocks.SampleBlock;
 import com.oitsjustjose.geolosys.common.items.CoalItem;
 import com.oitsjustjose.geolosys.common.items.ProPickItem;
 import com.oitsjustjose.geolosys.common.utils.Constants;
-import com.oitsjustjose.geolosys.common.utils.GeolosysGroup;
 import com.oitsjustjose.geolosys.common.world.feature.DepositFeature;
 import com.oitsjustjose.geolosys.common.world.feature.RemoveVeinsFeature;
+
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class Registry {
     public final DeferredRegister<Block> BlockRegistry = DeferredRegister.create(ForgeRegistries.BLOCKS, Constants.MODID);
     public final DeferredRegister<Item> ItemRegistry = DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MODID);
+    public final DeferredRegister<Feature<?>> FeatureRegistry = DeferredRegister.create(Registries.FEATURE, Constants.MODID);
 
-    public final DeferredRegister<Feature<?>> FeatureRegistry = DeferredRegister.create(net.minecraft.core.Registry.FEATURE_REGISTRY, Constants.MODID);
-    public final DeferredRegister<ConfiguredFeature<?, ?>> ConfiguredFeatureRegistry = DeferredRegister.create(net.minecraft.core.Registry.CONFIGURED_FEATURE_REGISTRY, Constants.MODID);
-    public final DeferredRegister<PlacedFeature> PlacedFeatureRegistry = DeferredRegister.create(net.minecraft.core.Registry.PLACED_FEATURE_REGISTRY, Constants.MODID);
+    public final RegistryObject<DepositFeature> deposits = FeatureRegistry.register(
+        "deposits", () -> new DepositFeature(NoneFeatureConfiguration.CODEC));
+    public final RegistryObject<RemoveVeinsFeature> remove_veins = FeatureRegistry.register(
+        "remove_veins", () -> new RemoveVeinsFeature(NoneFeatureConfiguration.CODEC));
 
     // Here because cutouts and coloring
     public final RegistryObject<Block> peat = BlockRegistry.register("peat", PeatBlock::new);
     public final RegistryObject<Block> rhododendron = BlockRegistry.register("rhododendron", () -> new PlantBlock(false, peat));
-    private final List<RegistryObject<Block>> NeedItemBlocks = Lists.newArrayList();
-    private final HashMap<String, Integer> UniversalMaterials = new HashMap<>() {{
-        put("anthracite_coal", 2);
-        put("autunite", 0);
-        put("azurite", 0);
-        put("bauxite", 0);
-        put("beryl", 7);
-        put("bituminous_coal", 2);
-        put("cassiterite", 0);
-        put("cinnabar", 0);
-        put("coal", 2);
-        put("galena", 0);
-        put("gold", 0);
-        put("hematite", 0);
-        put("kimberlite", 7);
-        put("lapis", 5);
-        put("lignite", 2);
-        put("limonite", 0);
-        put("malachite", 0);
-        put("platinum", 0);
-        put("quartz", 5);
-        put("sphalerite", 0);
-        put("teallite", 0);
-    }};
 
 
-    public Registry() {
-        RegisterBlocks();
-        RegisterItems();
-        RegisterWorldGen();
+    public Registry(IEventBus bus) {
+        final List<RegistryObject<Block>> NeedItemBlocks = RegisterBlocks();
+        final DeferredRegister<CreativeModeTab> CreativeModeTabRegistry = RegisterItems(NeedItemBlocks);
+
+        BlockRegistry.register(bus);
+        ItemRegistry.register(bus);
+        FeatureRegistry.register(bus);
+        CreativeModeTabRegistry.register(bus);
     }
 
-    public void RegisterAll(FMLJavaModLoadingContext ctx) {
-        BlockRegistry.register(ctx.getModEventBus());
-        ItemRegistry.register(ctx.getModEventBus());
-        FeatureRegistry.register(ctx.getModEventBus());
-        ConfiguredFeatureRegistry.register(ctx.getModEventBus());
-        PlacedFeatureRegistry.register(ctx.getModEventBus());
+    private <I extends Item> RegistryObject<I> RegisterItem(final List<RegistryObject<? extends Item>> queue, final String name, final Supplier<I> sup) {
+        final RegistryObject<I> item = ItemRegistry.register(name, sup);
+        queue.add(item);
+        return item;
     }
 
-    private void RegisterBlocks() {
-        BlockBehaviour.Properties baseProps = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(5.0F, 10F).sound(SoundType.STONE).requiresCorrectToolForDrops();
-        BlockBehaviour.Properties dsProps = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DEEPSLATE).strength(7.5F, 10F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops();
-        BlockBehaviour.Properties netherProps = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NETHER).strength(7.5F, 10F).requiresCorrectToolForDrops();
+    private final List<RegistryObject<Block>> RegisterBlocks() {
+        final List<RegistryObject<Block>> NeedItemBlocks = Lists.newArrayList();
+        final HashMap<String, Integer> UniversalMaterials = new HashMap<>() {{
+            put("anthracite_coal", 2);
+            put("autunite", 0);
+            put("azurite", 0);
+            put("bauxite", 0);
+            put("beryl", 7);
+            put("bituminous_coal", 2);
+            put("cassiterite", 0);
+            put("cinnabar", 0);
+            put("coal", 2);
+            put("galena", 0);
+            put("gold", 0);
+            put("hematite", 0);
+            put("kimberlite", 7);
+            put("lapis", 5);
+            put("lignite", 2);
+            put("limonite", 0);
+            put("malachite", 0);
+            put("platinum", 0);
+            put("quartz", 5);
+            put("sphalerite", 0);
+            put("teallite", 0);
+        }};
+
+        BlockBehaviour.Properties baseProps = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(5.0F, 10F).sound(SoundType.STONE).requiresCorrectToolForDrops();
+        BlockBehaviour.Properties dsProps = BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).strength(7.5F, 10F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops();
+        BlockBehaviour.Properties netherProps = BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(7.5F, 10F).requiresCorrectToolForDrops();
 
         // Non-standard blocks
         NeedItemBlocks.add(this.peat);
         NeedItemBlocks.add(this.rhododendron);
+
+        UniversalMaterials.forEach((name, xp) -> {
+            NeedItemBlocks.add(BlockRegistry.register(name + "_ore", () -> new OreBlock(baseProps, xp)));
+            NeedItemBlocks.add(BlockRegistry.register("deepslate_" + name + "_ore", () -> new OreBlock(dsProps, xp)));
+            NeedItemBlocks.add(BlockRegistry.register(name + "_ore_sample", SampleBlock::new));
+        });
 
         // Ores that don't need a deepslate variant
         NeedItemBlocks.add(BlockRegistry.register("ancient_debris_ore", () -> new OreBlock(netherProps.sound(SoundType.ANCIENT_DEBRIS), 0)));
@@ -99,76 +109,82 @@ public class Registry {
         NeedItemBlocks.add(BlockRegistry.register("nether_gold_ore", () -> new OreBlock(netherProps.sound(SoundType.NETHER_GOLD_ORE), 1)));
         NeedItemBlocks.add(BlockRegistry.register("nether_gold_ore_sample", SampleBlock::new));
 
-        UniversalMaterials.forEach((name, xp) -> {
-            NeedItemBlocks.add(BlockRegistry.register(name + "_ore", () -> new OreBlock(baseProps, xp)));
-            NeedItemBlocks.add(BlockRegistry.register("deepslate_" + name + "_ore", () -> new OreBlock(dsProps, xp)));
-            NeedItemBlocks.add(BlockRegistry.register(name + "_ore_sample", SampleBlock::new));
-        });
+
+        return NeedItemBlocks;
     }
 
-    private void RegisterItems() {
-        GeolosysGroup tab = GeolosysGroup.getInstance();
-        Item.Properties baseProps = new Item.Properties().tab(tab);
+    private DeferredRegister<CreativeModeTab> RegisterItems(final List<RegistryObject<Block>> NeedItemBlocks) {
+        DeferredRegister<CreativeModeTab> CreativeTabRegisty = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MODID);
+        final Item.Properties baseProps = new Item.Properties();
+        final List<RegistryObject<? extends Item>> TabListQueue = Lists.newArrayList(); 
 
         // Register Block Items
-        NeedItemBlocks.forEach(x -> ItemRegistry.register(x.getId().getPath(), () -> new BlockItem(x.get(), new Item.Properties().tab(tab))));
+        NeedItemBlocks.forEach(
+            ItemBlock -> RegisterItem(
+                TabListQueue, 
+                ItemBlock.getId().getPath(), 
+                () -> new BlockItem(ItemBlock.get(), baseProps)
+            )
+        );
 
         // Special Items -- just the one AFAIK
-        ItemRegistry.register("prospectors_pick", ProPickItem::new);
+        final RegistryObject<ProPickItem> prospector_pick = RegisterItem(TabListQueue, "prospectors_pick", ProPickItem::new);
 
         // Coals
-        ItemRegistry.register("anthracite_coal", () -> new CoalItem(20));
-        ItemRegistry.register("bituminous_coal", () -> new CoalItem(16));
-        ItemRegistry.register("lignite_coal", () -> new CoalItem(12));
-        ItemRegistry.register("peat_coal", () -> new CoalItem(6));
-        ItemRegistry.register("bituminous_coal_coke", () -> new CoalItem(32));
-        ItemRegistry.register("lignite_coal_coke", () -> new CoalItem(24));
+        RegisterItem(TabListQueue, "anthracite_coal", () -> new CoalItem(20));
+        RegisterItem(TabListQueue, "bituminous_coal", () -> new CoalItem(16));
+        RegisterItem(TabListQueue, "lignite_coal", () -> new CoalItem(12));
+        RegisterItem(TabListQueue, "peat_coal", () -> new CoalItem(6));
+        RegisterItem(TabListQueue, "bituminous_coal_coke", () -> new CoalItem(32));
+        RegisterItem(TabListQueue, "lignite_coal_coke", () -> new CoalItem(24));
 
         // Ingots
-        ItemRegistry.register("aluminum_ingot", () -> new Item(baseProps));
-        ItemRegistry.register("lead_ingot", () -> new Item(baseProps));
-        ItemRegistry.register("nickel_ingot", () -> new Item(baseProps));
-        ItemRegistry.register("platinum_ingot", () -> new Item(baseProps));
-        ItemRegistry.register("silver_ingot", () -> new Item(baseProps));
-        ItemRegistry.register("tin_ingot", () -> new Item(baseProps));
-        ItemRegistry.register("zinc_ingot", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "aluminum_ingot", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "lead_ingot", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "nickel_ingot", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "platinum_ingot", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "silver_ingot", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "tin_ingot", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "zinc_ingot", () -> new Item(baseProps));
 
         // Nuggets
-        ItemRegistry.register("aluminum_nugget", () -> new Item(baseProps));
-        ItemRegistry.register("copper_nugget", () -> new Item(baseProps));
-        ItemRegistry.register("lead_nugget", () -> new Item(baseProps));
-        ItemRegistry.register("nickel_nugget", () -> new Item(baseProps));
-        ItemRegistry.register("platinum_nugget", () -> new Item(baseProps));
-        ItemRegistry.register("silver_nugget", () -> new Item(baseProps));
-        ItemRegistry.register("tin_nugget", () -> new Item(baseProps));
-        ItemRegistry.register("zinc_nugget", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "aluminum_nugget", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "copper_nugget", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "lead_nugget", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "nickel_nugget", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "platinum_nugget", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "silver_nugget", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "tin_nugget", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "zinc_nugget", () -> new Item(baseProps));
 
         // Clusters
-        ItemRegistry.register("aluminum_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("ancient_debris_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("copper_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("gold_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("iron_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("lead_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("nether_gold_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("nickel_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("osmium_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("platinum_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("silver_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("tin_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("uranium_cluster", () -> new Item(baseProps));
-        ItemRegistry.register("zinc_cluster", () -> new Item(baseProps));
-    }
+        RegisterItem(TabListQueue, "aluminum_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "ancient_debris_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "copper_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "gold_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "iron_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "lead_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "nether_gold_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "nickel_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "osmium_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "platinum_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "silver_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "tin_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "uranium_cluster", () -> new Item(baseProps));
+        RegisterItem(TabListQueue, "zinc_cluster", () -> new Item(baseProps));
+        
+        CreativeTabRegisty.register("geolosys", 
+            () -> CreativeModeTab.builder()
+                .title(Component.literal("Geolosys"))
+                .icon(() -> new ItemStack(prospector_pick.get()))
+                .displayItems((params, output) -> {
+                    for(RegistryObject<? extends Item> TabListItem : TabListQueue) {
+                        output.accept(TabListItem.get());
+                    }
+                })
+                .build()
+        ); //At this moment no class requires the creative tab reference. 
 
-    public void RegisterWorldGen() {
-        List<PlacementModifier> placement = Lists.newArrayList(HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)));
-
-        RegistryObject<Feature<NoneFeatureConfiguration>> pebbles = FeatureRegistry.register("deposits", () -> new DepositFeature(NoneFeatureConfiguration.CODEC));
-        RegistryObject<ConfiguredFeature<?, ?>> configuredPebbles = ConfiguredFeatureRegistry.register("deposits_configured", () -> new ConfiguredFeature<>(pebbles.get(), NoneFeatureConfiguration.INSTANCE));
-        PlacedFeatureRegistry.register("deposits_placed", () -> new PlacedFeature(configuredPebbles.getHolder().get(), placement));
-
-        RegistryObject<Feature<NoneFeatureConfiguration>> twigs = FeatureRegistry.register("remove_veins", () -> new RemoveVeinsFeature(NoneFeatureConfiguration.CODEC));
-        RegistryObject<ConfiguredFeature<?, ?>> configuredTwigs = ConfiguredFeatureRegistry.register("remove_veins_configured", () -> new ConfiguredFeature<>(twigs.get(), NoneFeatureConfiguration.INSTANCE));
-        PlacedFeatureRegistry.register("remove_veins_placed", () -> new PlacedFeature(configuredTwigs.getHolder().get(), placement));
+        return CreativeTabRegisty;
     }
 }

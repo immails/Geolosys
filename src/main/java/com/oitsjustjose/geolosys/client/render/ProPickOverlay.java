@@ -4,6 +4,8 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.oitsjustjose.geolosys.common.config.ClientConfig;
 import com.oitsjustjose.geolosys.common.items.ProPickItem;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.font.FontSet;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.world.InteractionHand;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
@@ -22,14 +24,14 @@ public class ProPickOverlay {
         if (mc.player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof ProPickItem || mc.player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof ProPickItem) {
             GlStateManager._enableBlend();
             GlStateManager._blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-            int seaLvl = mc.player.getLevel().getSeaLevel();
+            int seaLvl = mc.player.level().getSeaLevel();
             int level = (int) (seaLvl - mc.player.getY());
             if (level < 0) {
-                mc.font.draw(event.getPoseStack(), I18n.get("geolosys.pro_pick.depth.above", Math.abs(level)), (float) ClientConfig.PROPICK_HUD_X.get(), (float) ClientConfig.PROPICK_HUD_Y.get(), 0xFFFFFFFF);
+                event.getGuiGraphics().drawString(mc.font, I18n.get("geolosys.pro_pick.depth.above", Math.abs(level)), ClientConfig.PROPICK_HUD_X.get(), ClientConfig.PROPICK_HUD_Y.get(), 0xFFFFFFFF);
             } else if (level == 0) {
-                mc.font.draw(event.getPoseStack(), I18n.get("geolosys.pro_pick.depth.at"), (float) ClientConfig.PROPICK_HUD_X.get(), (float) ClientConfig.PROPICK_HUD_Y.get(), 0xFFFFFFFF);
+                event.getGuiGraphics().drawString(mc.font, I18n.get("geolosys.pro_pick.depth.at"), ClientConfig.PROPICK_HUD_X.get(), ClientConfig.PROPICK_HUD_Y.get(), 0xFFFFFFFF);
             } else {
-                mc.font.draw(event.getPoseStack(), I18n.get("geolosys.pro_pick.depth.below", Math.abs(level)), (float) ClientConfig.PROPICK_HUD_X.get(), (float) ClientConfig.PROPICK_HUD_Y.get(), 0xFFFFFFFF);
+                event.getGuiGraphics().drawString(mc.font, I18n.get("geolosys.pro_pick.depth.below", Math.abs(level)), ClientConfig.PROPICK_HUD_X.get(), ClientConfig.PROPICK_HUD_Y.get(), 0xFFFFFFFF);
             }
         }
     }

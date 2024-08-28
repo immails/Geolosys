@@ -8,13 +8,12 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 public class PeatBlock extends Block {
 
     public PeatBlock() {
-        super(Properties.of(Material.DIRT, MaterialColor.GRASS).strength(4F, 3F).sound(SoundType.SOUL_SOIL));
+        super(Properties.of().mapColor(MapColor.DIRT).strength(4F, 3F).sound(SoundType.SOUL_SOIL));
         this.registerDefaultState(this.getStateDefinition().any().setValue(BlockStateProperties.BOTTOM, Boolean.TRUE));
     }
 

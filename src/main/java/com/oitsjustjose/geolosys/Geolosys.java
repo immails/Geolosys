@@ -14,10 +14,12 @@ import com.oitsjustjose.geolosys.common.CommonProxy;
 import com.oitsjustjose.geolosys.common.config.ClientConfig;
 import com.oitsjustjose.geolosys.common.config.CommonConfig;
 import com.oitsjustjose.geolosys.common.data.WorldGenDataLoader;
+import com.oitsjustjose.geolosys.common.datagen.WorldGenProvider;
 import com.oitsjustjose.geolosys.common.event.ManualGifting;
 import com.oitsjustjose.geolosys.common.items.CoalItem;
 import com.oitsjustjose.geolosys.common.utils.Constants;
 import net.minecraft.core.Direction;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,6 +28,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
@@ -52,12 +55,13 @@ public class Geolosys {
 
     public Geolosys() {
         instance = this;
+        LOGGER.info("Preparing to take over the worldgen");
 
-        REGISTRY = new Registry();
-        REGISTRY.RegisterAll(FMLJavaModLoadingContext.get());
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        REGISTRY = new Registry(bus);
 
         // Register the setup method for modloading
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(this::setup);
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> GeolosysClient::setup);

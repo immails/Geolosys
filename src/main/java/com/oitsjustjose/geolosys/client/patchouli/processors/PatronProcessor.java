@@ -1,6 +1,8 @@
 package com.oitsjustjose.geolosys.client.patchouli.processors;
 
 import org.jetbrains.annotations.NotNull;
+
+import net.minecraft.world.level.Level;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariable;
 import vazkii.patchouli.api.IVariableProvider;
@@ -42,12 +44,12 @@ public class PatronProcessor implements IComponentProcessor {
     }
 
     @Override
-    public void setup(@NotNull IVariableProvider variables) {
+    public void setup(Level level, IVariableProvider variables) {
         // No setup required, fetchPatrons is ran from Geolosys main on startup
     }
 
     @Override
-    public IVariable process(String key) {
+    public IVariable process(Level level, String key) {
         if (key.equals("patrons")) {
             return patrons;
         }

@@ -22,7 +22,7 @@ public class ManualGifting {
 
         try {
             Player player = event.getEntity();
-            IPlayerCapability cap = player.getLevel().getCapability(PlayerCapability.CAPABILITY).orElseThrow(() -> new RuntimeException("Player Capability is Null.."));
+            IPlayerCapability cap = player.level().getCapability(PlayerCapability.CAPABILITY).orElseThrow(() -> new RuntimeException("Player Capability is Null.."));
             if (!cap.hasManualBeenReceived(player.getUUID())) {
                 ItemHandlerHelper.giveItemToPlayer(player, PatchouliAPI.get().getBookStack(new ResourceLocation(Constants.MODID, "field_manual")));
                 cap.setManualReceived(player.getUUID());

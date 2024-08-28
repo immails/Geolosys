@@ -27,7 +27,7 @@ public class PacketHelpers {
         ListTag list = comp.getList(BLOCK_NBT_NAME, 10);
         list.forEach((c) -> {
             if (c instanceof CompoundTag) {
-                ret.add(NbtUtils.readBlockState((CompoundTag) c));
+                ret.add(NbtUtils.readBlockState(null, (CompoundTag) c)); // FIXME: Unknown behavior
             } else {
                 Geolosys.getInstance().LOGGER.error("The following compound appears to be broken: {}", c);
             }

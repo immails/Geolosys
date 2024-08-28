@@ -23,10 +23,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashSet;
 
 public class ProPickItem extends Item {
-    public static Item.Properties props = CommonConfig.ENABLE_PRO_PICK_DMG.get() ? new Item.Properties().stacksTo(1).tab(GeolosysGroup.getInstance()).durability(CommonConfig.PRO_PICK_DURABILITY.get()) : new Item.Properties().stacksTo(1).tab(GeolosysGroup.getInstance());
-
+    // hiiiiiiii less static
     public ProPickItem() {
-        super(props);
+        super(
+            CommonConfig.ENABLE_PRO_PICK_DMG.get()
+            ? new Item.Properties().stacksTo(1).durability(CommonConfig.PRO_PICK_DURABILITY.get())
+            : new Item.Properties().stacksTo(1)
+        );
         Geolosys.proxy.registerClientSubscribeEvent(this);
     }
 

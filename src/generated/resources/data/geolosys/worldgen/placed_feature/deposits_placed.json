@@ -1,0 +1,17 @@
+{
+  "feature": "geolosys:deposits",
+  "placement": [
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 320
+        },
+        "min_inclusive": {
+          "absolute": -64
+        }
+      }
+    }
+  ]
+}

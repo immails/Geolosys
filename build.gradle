@@ -2,11 +2,14 @@ buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
         maven { url "https://plugins.gradle.org/m2/" }
+        maven { url 'https://maven.blamejared.com' }
+        maven { url = 'https://maven.parchmentmc.org' }
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '6.+', changing: true
+        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 
@@ -14,10 +17,9 @@ plugins {
     id 'eclipse'
     id 'maven-publish'
     id "com.matthewprenger.cursegradle" version "1.4.0"
-    id "com.modrinth.minotaur" version "1.2.1"
 }
 apply plugin: 'net.minecraftforge.gradle'
-import com.modrinth.minotaur.TaskModrinthUpload
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 group = 'com.oitsjustjose.geolosys' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Geolosys-${game_version}-${mod_version}"
@@ -26,7 +28,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-    mappings channel: 'official', version: "${game_version}"
+    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
     runs {
         client {
             workingDirectory project.file('run')
@@ -51,8 +53,26 @@ minecraft {
                 }
             }
         }
+
+        data {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+
+            property 'forge.logging.console.level', 'debug'
+
+            args '--mod', "geolosys", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+            mods {
+                "geolosys" {
+                    source sourceSets.main
+                }
+            }
+        }
     }
 }
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${game_version}-${forge_version}"
@@ -96,66 +116,17 @@ def reobfArtifact = artifacts.add('default', reobfFile) {
 
 task deobfJar(type: Jar) {
     from sourceSets.main.output
-    classifier = 'Deobf'
+    archiveClassifier = 'Deobf'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'Sources'
+    archiveClassifier = 'Sources'
     from sourceSets.main.allSource
 }
 
 artifacts {
     archives deobfJar
     archives sourcesJar
-}
-
-tasks.register('modrinth', TaskModrinthUpload.class).configure {
-    dependsOn('assemble', 'reobfJar')
-    onlyIf {
-        project.hasProperty('modrinthApiKey')
-    }
-
-    token = project.hasProperty('MODRINTH_API_KEY') ? project.getProperty('MODRINTH_API_KEY') : ''
-    projectId = 'gu7yAYhd'
-    versionNumber = "${project.game_version}-${project.mod_version}"
-    uploadFile = jar
-    versionType = 'RELEASE'
-    addGameVersion(project.game_version)
-    changelog = file("./changelog.md").text
-    addLoader('forge')
-}
-
-curseforge {
-    apiKey = project.hasProperty("CURSEFORGE_API_KEY") ? project.CURSEFORGE_API_KEY : ""
-    project {
-        id = '271856'
-        changelogType = 'markdown'
-        changelog = file("./changelog.md")
-        releaseType = 'release'
-        addGameVersion '1.19'
-        addGameVersion '1.19.1'
-
-        relations {
-            requiredDependency 'patchouli'
-            optionalDependency 'applied-energistics-2'
-            optionalDependency 'extreme-reactors'
-            optionalDependency 'biggerreactors'
-            optionalDependency 'mekanism'
-        }
-
-        mainArtifact(jar) {
-            displayName = "Geolosys ${game_version} ${mod_version}"
-        }
-
-
-        addArtifact(deobfJar) {
-            displayName = "Geolosys ${game_version} ${mod_version} Deobf"
-        }
-
-        addArtifact(sourcesJar) {
-            displayName = "Geolosys ${game_version} ${mod_version} Sources"
-        }
-    }
 }
 
 publishing {
@@ -169,11 +140,4 @@ publishing {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
     }
-}
-
-def uploadTasks = ["curseforge", "modrinth"]
-
-task uploadAll(dependsOn: uploadTasks) {
-    group "upload"
-    description "Uploads to all repositories (Curse & Modrinth)"
 }

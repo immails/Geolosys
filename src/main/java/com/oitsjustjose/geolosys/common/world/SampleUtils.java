@@ -10,6 +10,7 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class SampleUtils {
@@ -69,7 +70,7 @@ public class SampleUtils {
      */
     public static boolean canReplace(WorldGenLevel level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
-        return state.getMaterial().isReplaceable() || state.isAir();
+        return state.canBeReplaced() || state.isAir();
     }
 
     /**
@@ -87,7 +88,7 @@ public class SampleUtils {
      * @return true if the block is in a non-water fluid
      */
     public static boolean inNonWaterFluid(WorldGenLevel level, BlockPos pos) {
-        return level.getBlockState(pos).getMaterial().isLiquid() && !isInWater(level, pos);
+        return level.getBlockState(pos).getBlock() instanceof LiquidBlock && !isInWater(level, pos);
     }
 
     /**
