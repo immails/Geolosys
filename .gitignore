@@ -2,6 +2,7 @@
 /build/
 /run/
 /out/
+/src/generated/
 *.DS_STORE
 *.iml
 *.ipr
