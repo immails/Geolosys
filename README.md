@@ -3,7 +3,7 @@
 ## Geolosys Next Changes
 
 This is an attempt to port Geolosys to 1.20.1. Something may be broken. So testing is welcomed!
--# I'm also trying to get rid of many static variables in the code
+(I'm also trying to get rid of many static variables in the code)
 
 ## Info
 
