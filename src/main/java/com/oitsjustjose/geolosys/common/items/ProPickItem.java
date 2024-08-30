@@ -1,12 +1,18 @@
 package com.oitsjustjose.geolosys.common.items;
 
+import java.util.HashSet;
+
+import javax.annotation.Nonnull;
+
+import org.jetbrains.annotations.NotNull;
+
 import com.oitsjustjose.geolosys.Geolosys;
 import com.oitsjustjose.geolosys.common.config.CommonConfig;
-import com.oitsjustjose.geolosys.common.utils.GeolosysGroup;
 import com.oitsjustjose.geolosys.common.utils.Prospecting;
-import com.oitsjustjose.geolosys.common.utils.Utils;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -18,9 +24,6 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.HashSet;
 
 public class ProPickItem extends Item {
     // hiiiiiiii less static
@@ -34,7 +37,7 @@ public class ProPickItem extends Item {
     }
 
     @Override
-    public @NotNull InteractionResult useOn(UseOnContext context) {
+    public @NotNull InteractionResult useOn(@Nonnull UseOnContext context) {
         Player player = context.getPlayer();
         InteractionHand hand = context.getHand();
         Level worldIn = context.getLevel();
@@ -76,8 +79,8 @@ public class ProPickItem extends Item {
     }
 
     private void prospect(Player player, ItemStack stack, Level level, BlockPos pos, Direction facing, int xStart, int xEnd, int yStart, int yEnd, int zStart, int zEnd) {
-        HashSet<BlockState> foundBlocks = new HashSet<>();
-        HashSet<BlockPos> foundBlockPos = new HashSet<>();
+        HashSet<BlockState> foundBlocks = new HashSet<BlockState>();
+        HashSet<BlockPos> foundBlockPos = new HashSet<BlockPos>();
         HashSet<BlockState> depositBlocks = Prospecting.getDepositBlocks();
 
         for (int x = xStart; x <= xEnd; x++) {
@@ -85,7 +88,7 @@ public class ProPickItem extends Item {
                 for (int z = zStart; z <= zEnd; z++) {
                     BlockPos tmpPos = pos.offset(x, y, z);
                     BlockState state = level.getBlockState(tmpPos);
-                    if (depositBlocks.contains(state) && Prospecting.canDetect(state)) {
+                    if (depositBlocks.contains(state) && !foundBlocks.contains(state) && Prospecting.canDetect(state)) {
                         foundBlocks.add(state);
                         foundBlockPos.add(tmpPos);
                     }
@@ -112,7 +115,7 @@ public class ProPickItem extends Item {
             for (int z = tempPos.getMinBlockZ(); z <= tempPos.getMaxBlockZ(); z++) {
                 for (int y = level.getMinBuildHeight(); y < level.getMaxBuildHeight(); y++) {
                     BlockState state = level.getBlockState(new BlockPos(x, y, z));
-                    if (depositBlocks.contains(state) && Prospecting.canDetect(state)) {
+                    if (depositBlocks.contains(state) && !foundBlocks.contains(state) && Prospecting.canDetect(state)) {
                         foundBlocks.add(state);
                     }
                 }
@@ -124,6 +127,6 @@ public class ProPickItem extends Item {
             return;
         }
 
-        player.displayClientMessage(Utils.tryTranslate("geolosys.pro_pick.tooltip.nonefound_surface"), true);
+        player.displayClientMessage(Component.translatable("geolosys.pro_pick.tooltip.nonefound_surface"), true);
     }
 }

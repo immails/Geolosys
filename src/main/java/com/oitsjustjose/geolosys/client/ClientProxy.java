@@ -3,10 +3,8 @@ package com.oitsjustjose.geolosys.client;
 import com.oitsjustjose.geolosys.client.network.PacketStackClientSurface;
 import com.oitsjustjose.geolosys.client.network.PacketStackClientUnderground;
 import com.oitsjustjose.geolosys.common.CommonProxy;
-import com.oitsjustjose.geolosys.common.network.PacketHelpers;
 import com.oitsjustjose.geolosys.common.network.PacketStackSurface;
 import com.oitsjustjose.geolosys.common.network.PacketStackUnderground;
-import com.oitsjustjose.geolosys.common.utils.Utils;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,11 +21,11 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void sendProspectingMessage(Player player, HashSet<BlockState> blocks, @Nullable Direction direction) {
-        if (direction != null) {
-            player.displayClientMessage(Utils.tryTranslate("geolosys.pro_pick.tooltip.found", PacketHelpers.messagify(blocks), direction), true);
-        } else {
-            player.displayClientMessage(Utils.tryTranslate("geolosys.pro_pick.tooltip.found_surface", PacketHelpers.messagify(blocks)), true);
-        }
+        // if (direction != null) {
+        //     player.displayClientMessage(Utils.tryTranslate("geolosys.pro_pick.tooltip.found", PacketHelpers.messagify(blocks), direction), true);
+        // } else {
+        //     player.displayClientMessage(Utils.tryTranslate("geolosys.pro_pick.tooltip.found_surface", PacketHelpers.messagify(blocks)), true);
+        // }
     }
 
     @Override

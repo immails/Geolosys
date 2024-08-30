@@ -1,23 +1,21 @@
 package com.oitsjustjose.geolosys.common.network;
 
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.network.NetworkEvent;
-
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.function.Supplier;
 
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraftforge.network.NetworkEvent;
+
 public class PacketStackSurface {
 
-    public HashSet<BlockState> blocks;
+    public HashSet<String> blocks;
 
     public PacketStackSurface(FriendlyByteBuf buf) {
-        CompoundTag comp = buf.readNbt();
-        this.blocks = PacketHelpers.decodeBlocks(comp);
+        this.blocks = new HashSet<String>(Arrays.asList(buf.readUtf().split(",")));
     }
 
-    public PacketStackSurface(HashSet<BlockState> d1) {
+    public PacketStackSurface(HashSet<String> d1) {
         this.blocks = d1;
     }
 
@@ -26,7 +24,7 @@ public class PacketStackSurface {
     }
 
     public static void encode(PacketStackSurface msg, FriendlyByteBuf buf) {
-        buf.writeNbt(PacketHelpers.encodeBlocks(msg.blocks));
+        buf.writeUtf(String.join(",", msg.blocks));
     }
 
     public void handleServer(Supplier<NetworkEvent.Context> context) {
