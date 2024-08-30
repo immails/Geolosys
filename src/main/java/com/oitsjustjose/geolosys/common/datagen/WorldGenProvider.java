@@ -3,7 +3,6 @@ package com.oitsjustjose.geolosys.common.datagen;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-import com.oitsjustjose.geolosys.Geolosys;
 import com.oitsjustjose.geolosys.common.utils.Constants;
 import com.oitsjustjose.geolosys.common.world.worldgen.ConfiguredFeatures;
 import com.oitsjustjose.geolosys.common.world.worldgen.PlacedFeatures;

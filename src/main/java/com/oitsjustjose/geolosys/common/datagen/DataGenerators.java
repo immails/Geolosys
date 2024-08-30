@@ -13,10 +13,9 @@ public class DataGenerators {
 	public static void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
 
-		WorldGenProvider worldGenProvider = generator.addProvider(
+		generator.addProvider(
 			event.includeServer(), 
 			new WorldGenProvider(generator.getPackOutput(), event.getLookupProvider())
 		);
-		System.out.println("help me pls");
 	}
 }

@@ -1,17 +1,15 @@
 package com.oitsjustjose.geolosys.client.patchouli.processors;
 
-import org.jetbrains.annotations.NotNull;
-
-import net.minecraft.world.level.Level;
-import vazkii.patchouli.api.IComponentProcessor;
-import vazkii.patchouli.api.IVariable;
-import vazkii.patchouli.api.IVariableProvider;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.concurrent.CompletableFuture;
+
+import net.minecraft.world.level.Level;
+import vazkii.patchouli.api.IComponentProcessor;
+import vazkii.patchouli.api.IVariable;
+import vazkii.patchouli.api.IVariableProvider;
 
 public class PatronProcessor implements IComponentProcessor {
 

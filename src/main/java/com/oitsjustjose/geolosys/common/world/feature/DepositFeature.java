@@ -16,7 +16,6 @@ import com.oitsjustjose.geolosys.capability.world.IChunkGennedCapability;
 import com.oitsjustjose.geolosys.common.config.CommonConfig;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.FlatLevelSource;

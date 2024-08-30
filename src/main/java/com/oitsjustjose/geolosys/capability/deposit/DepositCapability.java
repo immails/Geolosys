@@ -1,23 +1,22 @@
 package com.oitsjustjose.geolosys.capability.deposit;
 
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
+
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderGetter;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import javax.annotation.Nullable;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.stream.Collectors;
 
 public class DepositCapability implements IDepositCapability {
     // Essentially indexed by ChunkPos for ease of use
@@ -98,7 +97,7 @@ public class DepositCapability implements IDepositCapability {
         public static PendingBlock deserialize(Tag t) {
             if (t instanceof CompoundTag tag) {
                 BlockPos pos = NbtUtils.readBlockPos(tag.getCompound("pos"));
-                BlockState state = NbtUtils.readBlockState(null, tag.getCompound("state")); // FIXME: null 
+                BlockState state = NbtUtils.readBlockState(null, tag.getCompound("state"));
                 return new PendingBlock(pos, state);
             }
             return null;

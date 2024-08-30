@@ -1,15 +1,14 @@
 package com.oitsjustjose.geolosys.common.world;
 
-import com.oitsjustjose.geolosys.Geolosys;
-import com.oitsjustjose.geolosys.api.world.IDeposit;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.GenerationStep;
+import java.util.ArrayList;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+
+import com.oitsjustjose.geolosys.Geolosys;
+import com.oitsjustjose.geolosys.api.world.IDeposit;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.WorldGenLevel;
 
 public class PlutonRegistry {
     private ArrayList<IDeposit> deposits;
