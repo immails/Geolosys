@@ -52,6 +52,7 @@ public class ProPickItem extends Item {
             return InteractionResult.CONSUME;
         } else {
             ItemStack stack = player.getItemInHand(hand);
+            player.getCooldowns().addCooldown(stack.getItem(), 10);
 
             if (worldIn.isClientSide) {
                 player.swing(hand);

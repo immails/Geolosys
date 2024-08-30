@@ -1,6 +1,11 @@
 package com.oitsjustjose.geolosys.common.utils;
 
+import java.util.HashSet;
+import java.util.Objects;
+
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -10,8 +15,6 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.Objects;
 
 public class Utils {
     public static ItemStack blockStateToStack(BlockState state) {
@@ -48,5 +51,32 @@ public class Utils {
         } catch (CommandSyntaxException ex) {
             return Component.empty().append(transKey);
         }
+    }
+
+    private static MutableComponent combineBlocksToComponent(final HashSet<String> blocks) {
+        MutableComponent component = Component.empty();
+        Integer i = 0;
+        for (String block : blocks) {
+            component.append(Component.translatable("block." + block).withStyle(ChatFormatting.GOLD));
+            i++;
+            if (i < blocks.size()) component.append(Component.literal(" & ").withStyle(ChatFormatting.GRAY));
+        }
+        return component;
+    }
+
+    public static MutableComponent getProspectingTranslatedComponent(final HashSet<String> blocks) {
+        return MutableComponent.create(
+            new TranslatableContents("geolosys.pro_pick.tooltip.found_surface", null, new Object[]{
+                combineBlocksToComponent(blocks), 
+        })).withStyle(ChatFormatting.GRAY);
+    }
+
+    public static MutableComponent getProspectingTranslatedComponent(final HashSet<String> blocks, final Integer direction) {
+        return MutableComponent.create(
+            new TranslatableContents("geolosys.pro_pick.tooltip.found", null, new Object[]{
+                combineBlocksToComponent(blocks), 
+                Component.translatable("item.geolosys.pro_pick.direction." + Integer.valueOf(direction))
+                    .withStyle(ChatFormatting.WHITE)
+        })).withStyle(ChatFormatting.GRAY);
     }
 }
