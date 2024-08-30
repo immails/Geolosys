@@ -28,13 +28,16 @@ public class PacketStackClientUnderground {
     
     private static void sendProspectingMessage(LocalPlayer player, PacketStackUnderground msg) {
         MutableComponent component = Component.empty();
+        Integer i = 0;
         for (String block : msg.blocks) {
-            component.append(Component.translatable("block." + block));
+            component.append(Component.translatable("block." + block)).withStyle(ChatFormatting.GOLD);
+            i++;
+            if (i < msg.blocks.size() - 1) component.append(Component.literal(" & "));
         }
         player.displayClientMessage(
             MutableComponent.create(
                 new TranslatableContents("geolosys.pro_pick.tooltip.found", null, new Object[]{
-                    component.withStyle(ChatFormatting.GOLD), 
+                    component, 
                     Component.translatable("item.geolosys.pro_pick.direction." + Integer.valueOf(msg.direction))
                         .withStyle(ChatFormatting.WHITE)
             })).withStyle(ChatFormatting.GRAY), true
