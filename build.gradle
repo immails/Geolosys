@@ -19,7 +19,7 @@ plugins {
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 group = 'com.oitsjustjose.geolosys' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Geolosys-${game_version}-${mod_version}"
