@@ -5,7 +5,7 @@ license="GNU GPLv3"
 
 [[mods]]
 modId="geolosys"
-version="8.0.1"
+version="8.0.2"
 displayName="Geolosys"
 displayURL="https://github.com/immails/Geolosys-Next/"
 authors="immails, oitsjustjose"
