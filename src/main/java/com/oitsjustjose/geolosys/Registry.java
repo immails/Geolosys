@@ -1,5 +1,9 @@
 package com.oitsjustjose.geolosys;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.function.Supplier;
+
 import com.google.common.collect.Lists;
 import com.oitsjustjose.geolosys.common.blocks.OreBlock;
 import com.oitsjustjose.geolosys.common.blocks.PeatBlock;
@@ -14,6 +18,7 @@ import com.oitsjustjose.geolosys.common.world.feature.RemoveVeinsFeature;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -28,10 +33,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.function.Supplier;
+import vazkii.patchouli.api.PatchouliAPI;
 
 public class Registry {
     public final DeferredRegister<Block> BlockRegistry = DeferredRegister.create(ForgeRegistries.BLOCKS, Constants.MODID);
@@ -185,6 +187,7 @@ public class Registry {
                     for(RegistryObject<? extends Item> TabListItem : TabListQueue) {
                         output.accept(TabListItem.get());
                     }
+                    output.accept(PatchouliAPI.get().getBookStack(new ResourceLocation(Constants.MODID, "field_manual")));
                 })
                 .build()
         ); //At this moment no class requires the creative tab reference. 

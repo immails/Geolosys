@@ -29,11 +29,3 @@ src/main/resources/assets/base/models/item/wrench.json
 .idea
 .vscode/**
 logs
-
-scripts/node/package-lock.json
-scripts/node/node_modules/
-
-scripts/python-old/**/*.png
-scripts/python-old/**/overlays
-scripts/python-old/generators/blocks/blockstates
-scripts/python-old/generators/blocks/models

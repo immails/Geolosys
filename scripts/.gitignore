@@ -1,0 +1,7 @@
+node/package-lock.json
+node/node_modules/
+
+python-old/**/*.png
+python-old/**/overlays
+python-old/generators/blocks/blockstates
+python-old/generators/blocks/models
