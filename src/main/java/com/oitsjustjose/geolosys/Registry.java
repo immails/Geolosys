@@ -118,7 +118,7 @@ public class Registry {
 
     private DeferredRegister<CreativeModeTab> RegisterItems(final List<RegistryObject<Block>> NeedItemBlocks) {
         DeferredRegister<CreativeModeTab> CreativeTabRegisty = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MODID);
-        final Item.Properties baseProps = new Item.Properties();
+        final Item.Properties baseProps = new Item.Properties().stacksTo(64);
         final List<RegistryObject<? extends Item>> TabListQueue = Lists.newArrayList(); 
 
         // Register Block Items
@@ -132,7 +132,7 @@ public class Registry {
 
         // Special Items
         final RegistryObject<ProPickItem> prospector_pick = RegisterItem(TabListQueue, "prospectors_pick", ProPickItem::new);
-        RegisterItem(TabListQueue, "depth_meter", () -> new DepthMeterItem(baseProps.stacksTo(1)));
+        RegisterItem(TabListQueue, "depth_meter", () -> new DepthMeterItem(new Item.Properties().stacksTo(1)));
 
         // Coals
         RegisterItem(TabListQueue, "anthracite_coal", () -> new CoalItem(20));
