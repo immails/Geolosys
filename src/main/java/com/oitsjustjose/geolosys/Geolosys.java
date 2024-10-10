@@ -19,7 +19,6 @@ import com.oitsjustjose.geolosys.common.config.ClientConfig;
 import com.oitsjustjose.geolosys.common.config.CommonConfig;
 import com.oitsjustjose.geolosys.common.data.WorldGenDataLoader;
 import com.oitsjustjose.geolosys.common.event.ManualGifting;
-import com.oitsjustjose.geolosys.common.items.CoalItem;
 import com.oitsjustjose.geolosys.common.utils.Constants;
 
 import net.minecraft.core.Direction;
@@ -33,7 +32,6 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -188,10 +186,10 @@ public class Geolosys {
         }
     }
 
-    @SubscribeEvent
-    public void onFuelRegistry(FurnaceFuelBurnTimeEvent fuelBurnoutEvent) {
-        if (fuelBurnoutEvent.getItemStack().getItem() instanceof CoalItem c) {
-            fuelBurnoutEvent.setBurnTime(c.getBurnTime());
-        }
-    }
+    // @SubscribeEvent
+    // public void onFuelRegistry(FurnaceFuelBurnTimeEvent fuelBurnoutEvent) {
+    //     if (fuelBurnoutEvent.getItemStack().getItem() instanceof CoalItem c) {
+    //         fuelBurnoutEvent.setBurnTime(c.getBurnTime());
+    //     }
+    // }
 }

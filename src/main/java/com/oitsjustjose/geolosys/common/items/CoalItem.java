@@ -12,14 +12,11 @@ public class CoalItem extends Item {
 
     public CoalItem(int burnTime) {
         super(new Item.Properties().fireResistant());
+        this.burnTime = burnTime * 100;
     }
 
     @Override
     public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-        return this.getBurnTime();
-    }
-
-    public int getBurnTime() {
         return this.burnTime;
     }
 }
