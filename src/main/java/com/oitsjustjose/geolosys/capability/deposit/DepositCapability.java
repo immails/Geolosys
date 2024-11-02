@@ -6,12 +6,15 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
+import com.oitsjustjose.geolosys.common.utils.Utils;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -97,7 +100,7 @@ public class DepositCapability implements IDepositCapability {
         public static PendingBlock deserialize(Tag t) {
             if (t instanceof CompoundTag tag) {
                 BlockPos pos = NbtUtils.readBlockPos(tag.getCompound("pos"));
-                BlockState state = NbtUtils.readBlockState(null, tag.getCompound("state"));
+                BlockState state = Utils.readBlockState(Blocks.AIR, tag.getCompound("state"));
                 return new PendingBlock(pos, state);
             }
             return null;

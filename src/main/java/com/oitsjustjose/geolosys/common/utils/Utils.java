@@ -2,11 +2,14 @@ package com.oitsjustjose.geolosys.common.utils;
 
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.oitsjustjose.geolosys.Geolosys;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
@@ -14,6 +17,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.StateHolder;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class Utils {
@@ -78,5 +84,32 @@ public class Utils {
                 Component.translatable("item.geolosys.pro_pick.direction." + Integer.valueOf(direction))
                     .withStyle(ChatFormatting.WHITE)
         })).withStyle(ChatFormatting.GRAY);
+    }
+
+    public static BlockState readBlockState(Block block, CompoundTag pTag) {
+        BlockState blockstate = block.defaultBlockState();
+        if (pTag.contains("Properties", 10)) {
+            CompoundTag compoundtag = pTag.getCompound("Properties");
+            StateDefinition<Block, BlockState> statedefinition = block.getStateDefinition();
+
+            for(String s : compoundtag.getAllKeys()) {
+                Property<?> property = statedefinition.getProperty(s);
+                if (property != null) {
+                    blockstate = setValueHelper(blockstate, property, s, compoundtag, pTag);
+                }
+            }
+        }
+
+        return blockstate;
+    }
+
+    private static <S extends StateHolder<?, S>, T extends Comparable<T>> S setValueHelper(S pStateHolder, Property<T> pProperty, String pPropertyName, CompoundTag pPropertiesTag, CompoundTag pBlockStateTag) {
+        Optional<T> optional = pProperty.getValue(pPropertiesTag.getString(pPropertyName));
+        if (optional.isPresent()) {
+            return pStateHolder.setValue(pProperty, optional.get());
+        } else {
+            Geolosys.getInstance().LOGGER.warn("Unable to read property: {} with value: {} for blockstate: {}", pPropertyName, pPropertiesTag.getString(pPropertyName), pBlockStateTag.toString());
+            return pStateHolder;
+        }
     }
 }
