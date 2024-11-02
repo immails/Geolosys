@@ -1,5 +1,12 @@
 package com.oitsjustjose.geolosys.api.world.deposit;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map.Entry;
+
+import javax.annotation.Nullable;
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.oitsjustjose.geolosys.Geolosys;
@@ -12,6 +19,7 @@ import com.oitsjustjose.geolosys.common.data.serializer.SerializerUtils;
 import com.oitsjustjose.geolosys.common.utils.Utils;
 import com.oitsjustjose.geolosys.common.world.SampleUtils;
 import com.oitsjustjose.geolosys.common.world.feature.FeatureUtils;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -24,12 +32,6 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-
-import javax.annotation.Nullable;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map.Entry;
 
 public class DikeDeposit implements IDeposit {
     public static final String JSON_TYPE = "geolosys:deposit_dike";
@@ -283,7 +285,7 @@ public class DikeDeposit implements IDeposit {
 
             return new DikeDeposit(oreBlocks, sampleBlocks, yMin, yMax, baseRadius, genWt, biomeTag, blockStateMatchers);
         } catch (Exception e) {
-            Geolosys.getInstance().LOGGER.error("Failed to parse: {}", e.getMessage());
+            Geolosys.getInstance().LOGGER.error("Failed to parse: {} at {}", e.getMessage(), e.getStackTrace()[0]);
             return null;
         }
     }
